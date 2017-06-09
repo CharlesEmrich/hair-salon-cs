@@ -28,6 +28,10 @@ namespace HairSalon
         Client foundClient = Client.Find(parameters.id);
         return View["client-details.cshtml", foundClient];
       };
+      Get["/stylists/view/{id}"] = parameters => {
+        Stylist foundStylist = Stylist.Find(parameters.id);
+        return View["stylist-details.cshtml", foundStylist];
+      };
       Post["/clients/new"] = _ => {
         int newStylistId = Request.Form["stylist-id"];
         Client newClient = new Client(Request.Form["client-name"], newStylistId);
