@@ -47,5 +47,20 @@ namespace HairSalon
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void Delete_RemovesCuisineFromDatabase()
+    {
+      //Arrange
+      Client testCase1 = new Client("Nouvelle French");
+      testCase1.Save();
+      Client testCase2 = new Client("Germanic Modern");
+      testCase2.Save();
+      //Act
+      Client.Delete(testCase1.GetId());
+      int actual = Client.GetAll().Count;
+      int expected = 1;
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
