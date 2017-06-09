@@ -95,30 +95,33 @@ namespace HairSalon.Objects
     public List<Client> GetClients()
     {
       List<Client> allClients = new List<Client>{};
-      //
-      // SqlConnection conn = DB.Connection();
-      // conn.Open();
-      //
-      // SqlCommand cmd = new SqlCommand("SELECT * FROM stylists;", conn);
-      // SqlDataReader rdr = cmd.ExecuteReader();
-      //
-      // while(rdr.Read())
-      // {
-      //   int stylistId = rdr.GetInt32(0);
-      //   string stylistName = rdr.GetString(1);
-      //   Stylist newStylist = new Stylist(stylistName, stylistId);
-      //   allStylists.Add(newStylist);
-      // }
-      //
-      // if(rdr != null)
-      // {
-      //   rdr.Close();
-      // }
-      // if(conn != null)
-      // {
-      //   conn.Close();
-      // }
-      //
+
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM clients WHERE stylist_id = @StylistId;", conn);
+
+      SqlParameter idParameter = new SqlParameter("@StylistId", this.GetId());
+      cmd.Parameters.Add(idParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        int clientId = rdr.GetInt32(0);
+        string clientName = rdr.GetString(1);
+        int clientStylistId = rdr.GetInt32(2);
+        Client newClient = new Client(clientName, clientStylistId, clientId);
+        allClients.Add(newClient);
+      }
+
+      if(rdr != null)
+      {
+        rdr.Close();
+      }
+      if(conn != null)
+      {
+        conn.Close();
+      }
       return allClients;
     }
     public static Stylist FindByName(string searchName)
