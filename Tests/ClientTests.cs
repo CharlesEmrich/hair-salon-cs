@@ -48,7 +48,20 @@ namespace HairSalon
       Assert.Equal(expected, actual);
     }
     [Fact]
-    public void Delete_RemovesCuisineFromDatabase()
+    public void Update_UpdatesClientInDatabase()
+    {
+      //Arrange
+      Client testCase = new Client("Hrothgar Gunnirson", 0);
+      testCase.Save();
+      string newName = "Joe Smith";
+      //Act
+      testCase.Update(newName);
+      string actual = testCase.GetName();
+      //Assert
+      Assert.Equal(newName, actual);
+    }
+    [Fact]
+    public void Delete_RemovesClientFromDatabase()
     {
       //Arrange
       Client testCase1 = new Client("Jorge Kleems", 0);

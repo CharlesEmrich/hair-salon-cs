@@ -91,7 +91,7 @@ namespace HairSalon.Objects
         int clientId = rdr.GetInt32(0);
         string clientName = rdr.GetString(1);
         int clientStylistId = rdr.GetInt32(2);
-        Client newClient = new Client(clientName, clientId, clientStylistId);
+        Client newClient = new Client(clientName, clientStylistId, clientId);
         allClients.Add(newClient);
       }
 
@@ -106,7 +106,40 @@ namespace HairSalon.Objects
 
       return allClients;
     }
-
+    public void Update(string newName)
+    {
+      // SqlConnection conn = DB.Connection();
+      // conn.Open();
+      //
+      //
+      // SqlCommand cmd = new SqlCommand("UPDATE clients SET name = @NewName OUTPUT INSERTED.name WHERE id = @ClientId;", conn);
+      // SqlParameter newNameParameter = new SqlParameter();
+      // newNameParameter.ParameterName = "@NewName";
+      // newNameParameter.Value = newName;
+      // cmd.Parameters.Add(newNameParameter);
+      //
+      //
+      // SqlParameter clientIdParameter = new SqlParameter();
+      // clientIdParameter.ParameterName = "@ClientId";
+      // clientIdParameter.Value = this.GetId();
+      // cmd.Parameters.Add(clientIdParameter);
+      // SqlDataReader rdr = cmd.ExecuteReader();
+      //
+      // while(rdr.Read())
+      // {
+      //   this._name = rdr.GetString(0);
+      // }
+      //
+      // if (rdr != null)
+      // {
+      //   rdr.Close();
+      // }
+      //
+      // if (conn != null)
+      // {
+      //   conn.Close();
+      // }
+    }
     public static void DeleteAll()
     {
       SqlConnection conn = DB.Connection();
