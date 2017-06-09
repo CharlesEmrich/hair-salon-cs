@@ -48,5 +48,21 @@ namespace HairSalon
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void GetClients_ReturnsListOfClients()
+    {
+      //Arrange
+      Stylist testCase = new Stylist("Janine Wergton");
+      testCase.Save();
+      Client testClient1 = new Client("George Wendt", testCase.GetId());
+      testClient1.Save();
+      Client testClient2 = new Client("Wendell Georges", testCase.GetId());
+      testClient2.Save();
+      //Act
+      List<Client> actual = testCase.GetClients();
+      List<Client> expected = new List<Client>{testClient1, testClient2};
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
