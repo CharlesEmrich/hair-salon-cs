@@ -7,7 +7,7 @@ using Nancy.Owin;
 using Nancy.ViewEngines.Razor;
 using System.Data.SqlClient;
 
-namespace BestRestaurants
+namespace HairSalon
 {
   public class Startup
   {
