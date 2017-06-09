@@ -1,11 +1,21 @@
 @{
   Layout="Shared/_Layout.cshtml";
-  var url = Request.Path;
 }
 
+<form action="/stylists/new" method="post">
+  <label for="stylist-name">Name:</label>
+  <input type="text" name="stylist-name">
+  <button type="submit" name="button">Add Stylist</button>
+</form>
+
+@if(Model["stylists"].Count > 0)
+{
 <ul>
   @foreach(var stylist in Model["stylists"])
   {
     <li>@stylist.Getname() | <a href="/stylists/@stylist.GetId()/view">View Clients</a></li>
   }
 </ul>
+} else {
+  <p>No stylists yet.</p>
+}

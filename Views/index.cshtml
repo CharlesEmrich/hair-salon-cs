@@ -1,6 +1,22 @@
 @{
   Layout="Shared/_Layout.cshtml";
-  var url = Request.Path;
 }
 
-<p>Hello World!</p>
+@if(Model["stylists"].Count > 0)
+{
+  <ul>
+    @foreach(var stylist in Model["stylists"])
+    {
+      <li>@stylist.Getname()
+        <ul>
+          @foreach(var client in stylist.GetClients())
+          {
+            <li>@client.GetName()</li>
+          }
+        </ul>
+      </li>
+    }
+  </ul>
+} else {
+  <p>No stylists yet.</p>
+}

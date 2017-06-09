@@ -50,6 +50,10 @@ namespace HairSalon.Objects
     {
       return _stylistId;
     }
+    public Stylist GetStylist()
+    {
+      return Stylist.Find(this.GetStylistId());
+    }
     public void Save()
     {
       SqlConnection conn = DB.Connection();

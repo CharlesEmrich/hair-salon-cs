@@ -1,11 +1,17 @@
 @{
   Layout="Shared/_Layout.cshtml";
-  var url = Request.Path;
 }
 
-<ul>
-  @foreach(var client in Model)
-  {
-    <li>@client.Getname() | <a href="/clients/@stylist.GetId()/edit">Edit</a> | <a href="/clients/@stylist.GetId()/delete">Delete</a></li>
-  }
-</ul>
+<h1>@Model.GetName()</h1>
+
+@if(Model.GetClients().Count > 0)
+{
+  <ul>
+    @foreach(var client in Model.GetClients())
+    {
+      <li>@client.Getname() | <a href="/clients/@stylist.GetId()/edit">Edit</a> | <a href="/clients/@stylist.GetId()/delete">Delete</a></li>
+    }
+  </ul>
+} else {
+  <p>No clients yet for this stylist</p>
+}
