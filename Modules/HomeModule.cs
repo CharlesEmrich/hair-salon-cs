@@ -21,7 +21,8 @@ namespace HairSalon
         return View["stylists.cshtml", model];
       };
       Post["/clients/new"] = _ => {
-        Client newClient = new Client(Request.Form["client-name"], Request.Form["stylist-id"]);
+        int newStylistId = Request.Form["stylist-id"];
+        Client newClient = new Client(Request.Form["client-name"], newStylistId);
         newClient.Save();
         return View["client-details.cshtml", newClient];
       };

@@ -8,7 +8,7 @@
   <select name="stylist-id">
     @foreach(var stylist in Model["stylists"])
     {
-      <option value="@stylist.GetId" name="stylist-id">@stylist.GetName()</option>
+      <option value="@stylist.GetId()" name="stylist-id">@stylist.GetName()</option>
     }
   </select>
   <button type="submit" name="button">Add Client</button>
@@ -19,7 +19,7 @@
   <ul>
     @foreach(var client in Model["clients"])
     {
-      <li>@client.GetName() | Stylist: client.GetStylist().GetName() | <a href="/clients/@stylist.GetId()/edit">Edit</a> | <a href="/clients/@stylist.GetId()/delete">Delete</a></li>
+      <li>@client.GetName() | Stylist: client.GetStylist().GetName() | <a href="/clients/@client.GetId()/edit">Edit</a> | <a href="/clients/@client.GetId()/delete">Delete</a></li>
     }
   </ul>
 } else {
