@@ -26,5 +26,26 @@ namespace HairSalon
       //Assert
       Assert.Equal(expected, actual);
     }
+    [Fact]
+    public void Equals_ReturnsTrueForEquivalentObjects()
+    {
+      //Arrange / Act
+      Client testCase1 = new Client("John Bugward");
+      Client testCase2 = new Client("John Bugward");
+      //Assert
+      Assert.Equal(testCase1, testCase2);
+    }
+    [Fact]
+    public void Save_SavesClientToDatabase()
+    {
+      //Arrange
+      Client testCase = new Client("Wade Dilby");
+      //Act
+      testCase.Save();
+      List<Client> actual = Client.GetAll();
+      List<Client> expected = new List<Client>{testCase};
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
