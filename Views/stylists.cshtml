@@ -13,7 +13,7 @@
 <ul>
   @foreach(var stylist in Model["stylists"])
   {
-    <li>@stylist.GetName() | <a href="/stylists/@stylist.GetId()/view">View Clients</a></li>
+    <li>@stylist.GetName() | <a href="/stylists/view/@stylist.GetId()">View Clients</a></li>
   }
 </ul>
 } else {

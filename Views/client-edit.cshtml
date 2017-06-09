@@ -1,0 +1,16 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+}
+
+<h2>Edit Client</h2>
+
+<form action="/clients/edit/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <label for="client-name"></label>
+  <input type="text" name="client-name" value="@Model.GetName()">
+</form>
+
+<form action="/clients/delete/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+  <button type="Submit" name="button">Delete This Client</button>
+</form>

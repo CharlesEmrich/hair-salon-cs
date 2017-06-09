@@ -129,10 +129,10 @@ namespace HairSalon.Objects
       conn.Open();
 
       SqlCommand cmd = new SqlCommand("SELECT * FROM stylists WHERE id = @StylistId;", conn);
-      SqlParameter categoryIdParameter = new SqlParameter();
-      categoryIdParameter.ParameterName = "@StylistId";
-      categoryIdParameter.Value = searchId.ToString();
-      cmd.Parameters.Add(categoryIdParameter);
+      SqlParameter IdParameter = new SqlParameter();
+      IdParameter.ParameterName = "@StylistId";
+      IdParameter.Value = searchId.ToString();
+      cmd.Parameters.Add(IdParameter);
       SqlDataReader rdr = cmd.ExecuteReader();
 
       int foundId = 0;
