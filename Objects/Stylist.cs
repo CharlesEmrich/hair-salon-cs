@@ -92,9 +92,9 @@ namespace HairSalon.Objects
 
       return allStylists;
     }
-    public static void GetClients()
+    public List<Client> GetClients()
     {
-      // List<Stylist> allStylists = new List<Stylist>{};
+      List<Client> allClients = new List<Client>{};
       //
       // SqlConnection conn = DB.Connection();
       // conn.Open();
@@ -119,7 +119,7 @@ namespace HairSalon.Objects
       //   conn.Close();
       // }
       //
-      // return allStylists;
+      return allClients;
     }
     public static Stylist FindByName(string searchName)
     {
