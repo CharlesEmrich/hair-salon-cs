@@ -18,5 +18,13 @@ namespace HairSalon
       Client.DeleteAll();
     }
 
+    public void GetAll_DatabaseStartsEmpty()
+    {
+      //Arrange / Act
+      int actual = Client.GetAll().Count;
+      int expected = 0;
+      //Assert
+      Assert.Equal(expected, actual);
+    }
   }
 }
