@@ -113,7 +113,6 @@ namespace HairSalon.Objects
         Client newClient = new Client(clientName, clientStylistId, clientId);
         allClients.Add(newClient);
       }
-
       if(rdr != null)
       {
         rdr.Close();
@@ -123,6 +122,40 @@ namespace HairSalon.Objects
         conn.Close();
       }
       return allClients;
+    }
+    public static Stylist Find(int searchId)
+    {
+      SqlConnection conn = DB.Connection();
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("SELECT * FROM stylists WHERE id = @StylistId;", conn);
+      SqlParameter categoryIdParameter = new SqlParameter();
+      categoryIdParameter.ParameterName = "@StylistId";
+      categoryIdParameter.Value = searchId.ToString();
+      cmd.Parameters.Add(categoryIdParameter);
+      SqlDataReader rdr = cmd.ExecuteReader();
+
+      int foundId = 0;
+      string foundName = null;
+
+      while(rdr.Read())
+      {
+        foundId = rdr.GetInt32(0);
+        foundName = rdr.GetString(1);
+      }
+
+      Stylist foundStylist = new Stylist(foundName, foundId);
+
+      if(rdr != null)
+      {
+        rdr.Close();
+      }
+      if(conn != null)
+      {
+        conn.Close();
+      }
+
+      return foundStylist;
     }
     public static Stylist FindByName(string searchName)
     {

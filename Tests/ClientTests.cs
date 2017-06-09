@@ -56,6 +56,15 @@ namespace HairSalon
       testCase.Save();
       List<Client> actual = Client.GetAll();
       List<Client> expected = new List<Client>{testCase};
+      //NOTE: This test is broken by the test for GetClients. I have left these WriteLines in so that you can more easily view what starts happening if you uncomment the GetClients test.
+      // foreach(Client ele in actual)
+      // {
+      //   Console.WriteLine("{0}, {1}, {2}", ele.GetId(), ele.GetName(), ele.GetStylistId());
+      // }
+      // foreach(Client ele in expected)
+      // {
+      //   Console.WriteLine("{0}, {1}, {2}", ele.GetId(), ele.GetName(), ele.GetStylistId());
+      // }
       //Assert
       Assert.Equal(expected, actual);
     }

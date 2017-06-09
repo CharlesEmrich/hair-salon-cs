@@ -1,0 +1,11 @@
+@{
+  Layout="Shared/_Layout.cshtml";
+  var url = Request.Path;
+}
+
+<ul>
+  @foreach(var client in Model)
+  {
+    <li>@client.Getname() | <a href="/clients/@stylist.GetId()/edit">Edit</a> | <a href="/clients/@stylist.GetId()/delete">Delete</a></li>
+  }
+</ul>

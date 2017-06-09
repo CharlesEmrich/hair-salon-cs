@@ -12,6 +12,10 @@ namespace HairSalon
         Dictionary<string, object> model = new Dictionary<string, object> {{"clients", Client.GetAll()}, {"stylists", Stylist.GetAll()}};
         return View["index.cshtml", model];
       };
+      Get["/"] = _ => {
+        Dictionary<string, object> model = new Dictionary<string, object> {{"clients", Client.GetAll()}, {"stylists", Stylist.GetAll()}};
+        return View["stylists.cshtml", model];
+      };
     }
   }
 }
