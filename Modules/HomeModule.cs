@@ -47,7 +47,7 @@ namespace HairSalon
       Delete["clients/delete/{id}"] = parameters => {
         Dictionary<string, object> model = new Dictionary<string, object> {{"clients", Client.GetAll()}, {"stylists", Stylist.GetAll()}};
         Client foundClient = Client.Find(parameters.id);
-        foundClient.Delete();
+        Client.Delete(foundClient.GetId());
         return View["index.cshtml", model];
       };
     }

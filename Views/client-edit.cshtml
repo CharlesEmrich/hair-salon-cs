@@ -3,11 +3,13 @@
 }
 
 <h2>Edit Client</h2>
+<h3>Model.GetName()</h3>
 
 <form action="/clients/edit/@Model.GetId()" method="post">
   <input type="hidden" name="_method" value="PATCH">
-  <label for="client-name"></label>
-  <input type="text" name="client-name" value="@Model.GetName()">
+  <label for="client-name">Client Name:</label>
+  <input type="text" name="client-name" placeholder="@Model.GetName()">
+  <button type="submit" name="button">Change Name</button>
 </form>
 
 <form action="/clients/delete/@Model.GetId()" method="post">
