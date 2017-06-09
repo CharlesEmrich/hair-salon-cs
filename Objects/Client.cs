@@ -12,9 +12,15 @@ namespace HairSalon.Objects
 
     public Client(string name, int stylistId, int id = 0)
     {
-      _id = id;
-      _name = name;
+      _id        = id;
+      _name      = name;
       _stylistId = stylistId;
+    }
+    public Client(string name, string stylistId, int id = 0)
+    {
+      _id        = id;
+      _name      = name;
+      _stylistId = Stylist.FindByName(stylistId).GetId();;
     }
 
     public override bool Equals(System.Object otherClient)

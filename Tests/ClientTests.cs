@@ -16,6 +16,7 @@ namespace HairSalon
     public void Dispose()
     {
       Client.DeleteAll();
+      Stylist.DeleteAll();
     }
 
     public void GetAll_DatabaseStartsEmpty()
@@ -25,6 +26,17 @@ namespace HairSalon
       int expected = 0;
       //Assert
       Assert.Equal(expected, actual);
+    }
+    [Fact]
+    public void Constructor_TakesStringforStylistId()
+    {
+      //Arrange / Act
+      Stylist testStylist = new Stylist("Mandy Lopatka");
+      testStylist.Save();
+      Client testCase1 = new Client("James Wingate", "Mandy Lopatka");
+      Client testCase2 = new Client("James Wingate", testStylist.GetId());
+      //Assert
+      Assert.Equal(testCase2, testCase1);
     }
     [Fact]
     public void Equals_ReturnsTrueForEquivalentObjects()
