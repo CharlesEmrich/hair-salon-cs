@@ -7,7 +7,7 @@
   <ul>
     @foreach(var stylist in Model["stylists"])
     {
-      <li>@stylist.Getname()
+      <li>@stylist.GetName()
         <ul>
           @foreach(var client in stylist.GetClients())
           {

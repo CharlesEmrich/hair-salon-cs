@@ -9,7 +9,7 @@
   <ul>
     @foreach(var client in Model.GetClients())
     {
-      <li>@client.Getname() | <a href="/clients/@stylist.GetId()/edit">Edit</a> | <a href="/clients/@stylist.GetId()/delete">Delete</a></li>
+      <li>@client.GetName() | <a href="/clients/@client.GetId()/edit">Edit</a> | <a href="/clients/@client.GetId()/delete">Delete</a></li>
     }
   </ul>
 } else {
