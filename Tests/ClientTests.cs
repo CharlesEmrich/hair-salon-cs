@@ -30,8 +30,8 @@ namespace HairSalon
     public void Equals_ReturnsTrueForEquivalentObjects()
     {
       //Arrange / Act
-      Client testCase1 = new Client("John Bugward");
-      Client testCase2 = new Client("John Bugward");
+      Client testCase1 = new Client("John Bugward", 0);
+      Client testCase2 = new Client("John Bugward", 0);
       //Assert
       Assert.Equal(testCase1, testCase2);
     }
@@ -39,7 +39,7 @@ namespace HairSalon
     public void Save_SavesClientToDatabase()
     {
       //Arrange
-      Client testCase = new Client("Wade Dilby");
+      Client testCase = new Client("Wade Dilby", 0);
       //Act
       testCase.Save();
       List<Client> actual = Client.GetAll();
@@ -51,9 +51,9 @@ namespace HairSalon
     public void Delete_RemovesCuisineFromDatabase()
     {
       //Arrange
-      Client testCase1 = new Client("Nouvelle French");
+      Client testCase1 = new Client("Jorge Kleems", 0);
       testCase1.Save();
-      Client testCase2 = new Client("Germanic Modern");
+      Client testCase2 = new Client("Jimson Clegway", 0);
       testCase2.Save();
       //Act
       Client.Delete(testCase1.GetId());
